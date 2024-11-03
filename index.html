@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeetCodeCure</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 1px solid black;
+        }
+
+        #upper {
+            display: flex;
+            flex-direction: column;
+            height: 10vh;
+        }
+
+        #lower {
+            display: flex;
+            height: 90vh;
+        }
+
+            #sidebar {
+                width: 20vw;
+                padding: 5px;
+            }
+
+                #searchBar {
+                    margin-bottom: 5px;
+                    width: 100%;
+                    border-radius: 5px;
+                }
+
+                #searchResult {
+                    width: 100%;
+                }
+
+                    #searchResult > div{
+                        margin: 5px 0;
+                        padding: 5px;
+                        border-radius: 5px;
+                    }
+            
+            #main {
+                display: flex;
+                flex-direction: column;
+
+                width: 80vw;
+                padding: 5px;
+            }
+
+                #problemBox {
+                    padding: 5px;
+
+                    margin-bottom: 5px;
+                    height: 10%;
+                }
+
+                #codeBox {
+                    padding: 5px;
+
+                    height: 90%;
+                }
+    </style>
+</head>
+
+<body>
+    <div id="upper">
+        <h1>CODELEETCODE</h1>
+        <p>Solution of POTD by @himanshumahaur</p>
+    </div>
+    <div id="lower">
+        <div id="sidebar">
+            <input id="searchBar" placeholder="Type to search...">
+            <div id="searchResult"></div>
+        </div>
+    
+        <div id="main">
+            <h2 id="problemBox">Problem Title</h2>
+            <div id="codeBox">Code example will appear here. This area is scrollable if the content exceeds the maximum height.</div>
+        </div>
+    </div>
+
+    <script src="dbs.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
