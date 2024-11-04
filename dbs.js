@@ -62,8 +62,20 @@ public:
     }
 };`
     },
-    0: {
-        problem: 'example-problem',
-        code: 'example-code'
+    3163: {
+        problem: `String Compression III`,
+        code:  `class Solution {
+public:
+    string compressedString(string word) {
+        string res;
+        for(int i=0; i<word.length(); i++) {
+            int j = i;
+            while(word[i]==word[j] && i-j<9) i++;
+            res += to_string(i-j) + word[j];
+            i--;
+        }
+        return res;
+    }
+};`
     }
 }
