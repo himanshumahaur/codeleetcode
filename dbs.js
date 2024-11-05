@@ -77,5 +77,16 @@ public:
         return res;
     }
 };`
+    },
+    2914: {
+        problem: `Minimum Number of Changes to Make Binary String Beautiful`,
+        code:  `class Solution {
+public:
+    int minChanges(string s) {
+        int ops = 0;
+        for(int i=0; i<s.length(); i+=2) if(s[i] != s[i+1]) ops += 1;
+        return ops;
+    }
+};`
     }
 }
