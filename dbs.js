@@ -88,5 +88,41 @@ public:
         return ops;
     }
 };`
+    },
+    3011: {
+        problem: `Find if Array Can Be Sorted`,
+        code:  `class Solution {
+public:
+    int count(int num) {
+        int count = 0;
+        while(num) {
+            if(num%2) count++;
+            num /= 2;
+        }
+        return count;
+    }
+
+    bool canSortArray(vector<int>& nums) {
+        vector<int> bina;
+        for(auto num:nums) bina.push_back(count(num));
+
+        for(int i=0; i<nums.size(); i++) {
+            for(int j=0; j<nums.size()-1; j++) {
+                if(bina[j]==bina[j+1] && nums[j] > nums[j+1]) {
+                    int t1 = nums[j];
+                    int t2 = bina[j];
+                    nums[j] = nums[j+1];
+                    bina[j] = bina[j+1];
+                    nums[j+1] = t1;
+                    bina[j+1] = t2;
+                }
+            }
+        }
+
+        for(int i=0; i<nums.size()-1; i++) if(nums[i] > nums[i+1]) return false;
+
+        return true;
+    }
+};`
     }
 }
