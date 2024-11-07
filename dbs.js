@@ -124,5 +124,29 @@ public:
         return true;
     }
 };`
+    },
+    2275: {
+        problem: `Largest Combination With Bitwise AND Greater Than Zero`,
+        code:  `class Solution {
+public:
+    void fill(vector<int> &mem, int num) {
+        int idx = 0;
+        while(num) {
+            if(num & 1) mem[idx]++;
+            num >>= 1; 
+            idx++;
+        }
+    }
+
+    int largestCombination(vector<int>& candidates) {
+        vector<int> mem(40);
+
+        for(auto i:candidates) fill(mem, i);
+        
+        int res = 0;
+        for(auto i:mem) res = max(res, i);
+        return res;
+    }
+};`
     }
 }
