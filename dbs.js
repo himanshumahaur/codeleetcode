@@ -148,5 +148,41 @@ public:
         return res;
     }
 };`
+    },
+    1829: {
+        problem: `Maximum XOR for Each Query`,
+        code:  `class Solution {
+public:
+    vector<int> getMaximumXor(vector<int>& nums, int maxBit) {
+        vector<int> result;
+
+        int cxor = nums[0];
+        int n = nums.size();
+        int idx = n;
+
+        for(int i=1; i<n; i++) cxor ^= nums[i];
+
+        for(int i=0; i<n; i++) {
+            int val = 0;   
+            int bit = 0;
+            int cur = cxor;   
+
+            while(bit < maxBit) {
+                if(cur%2==0 || cur==0) {
+                    val += pow(2, bit);
+                }
+                cur /= 2;
+                bit++;
+            }
+
+            result.push_back(val);
+
+            idx--;
+            cxor ^= nums[idx];
+        }
+
+        return result;
+    }
+};`
     }
 }
