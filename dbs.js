@@ -184,5 +184,58 @@ public:
         return result;
     }
 };`
+    },
+    3133: {
+        problem: `Minimum Array End`,
+        code:  `class Solution {
+public:
+    long long minEnd(int x, int n) {
+        long long res = 0;
+        int idx = 0;
+
+        x--;
+
+        while(n || x) {
+            if(n && x) {
+                if(n&1) {
+                    res += pow(2, idx);
+                }
+                else {
+                    if(x&1) res += pow(2, idx);
+                    x >>= 1;
+                }
+                n >>= 1;
+            }
+            else if(n) {
+                if(n&1) res += pow(2, idx);
+                n >>= 1;
+            }
+            else if(x) {
+                if(x&1) res += pow(2, idx);
+                x >>= 1;
+            }
+            idx++;
+        }
+
+        return res;
     }
+};`
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    
 }
