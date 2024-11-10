@@ -221,9 +221,56 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    3097: {
+        problem: `Shortest Subarray With OR at Least K II`,
+        code:  `class Solution {
+public:
+    void add(vector<int> &vec, int num) {
+        int idx = 0;
+        while(num) {
+            vec[idx] += num%2;
+            num /= 2;
+            idx++;
+        }
+    }
+
+    void sub(vector<int> &vec, int num) {
+        int idx = 0;
+        while(num) {
+            vec[idx] -= num%2;
+            num /= 2;
+            idx++;
+        }
+    }
+
+    int gnv(vector<int> &vec) {
+        int num = 0;
+        for(int i=0; i<32; i++) if(vec[i]) num += pow(2, i);
+        return num;
+    }
+
+    int minimumSubarrayLength(vector<int>& nums, int k) {
+        int n = nums.size();
+        int r = INT_MAX;
+
+        vector<int> vec(32);
+
+        int p = 0;
+
+        for(int i=0; i<n; i++) {
+            add(vec, nums[i]);
+
+            while(p <= i && gnv(vec) >= k) {
+                sub(vec, nums[p]);
+                r = min(r, i-p+1);
+                p++;
+            }
+        }
+
+        if(r==INT_MAX) return -1;
+        return r;
+    }
+};`
     },
     0: {
         problem: ``,
