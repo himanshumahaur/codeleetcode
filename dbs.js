@@ -272,9 +272,39 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    2601: {
+        problem: `Prime Subtraction Operation`,
+        code:  `class Solution {
+public:
+    bool primeSubOperation(vector<int>& nums) {
+        int n = nums.size();
+
+        vector<int> primes;
+
+        for(int i=2; i<1000; i++) {
+            bool p = true;
+            for(int j=2; j<=sqrt(i); j++) {
+                if(i%j==0) p = false;
+                if(!p) break;
+            }
+            if(p) primes.push_back(i);
+        }
+
+        for(int i=n-2; i>=0; i--) {
+            for(auto p:primes) {
+                if(nums[i] < nums[i+1]) break;
+                if(p>=nums[i]) break;
+                if(nums[i]-p < nums[i+1]) {
+                    nums[i] -= p;
+                    break;
+                }
+            }
+            if(nums[i]>=nums[i+1]) return false;
+        }
+
+        return true;
+    }
+};`
     },
     0: {
         problem: ``,
