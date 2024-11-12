@@ -306,9 +306,58 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    2070: {
+        problem: `Most Beautiful Item for Each Query`,
+        code:  `class Solution {
+public:
+    static bool cmp(vector<int> &a, vector<int> &b) {
+        return a[0] < b[0];
+    }
+
+    vector<int> maximumBeauty(vector<vector<int>>& items, vector<int>& queries) {
+        int maxBeauty = INT_MIN;
+        vector<int> vec;
+        vector<int> nec;
+        sort(items.begin(), items.end(), cmp);
+
+        for(int i=0; i<items.size(); i++) {
+            int price = items[i][0];
+            int beauty = items[i][1];
+
+            if(vec.size()) {
+                int idx = vec.size()-1;
+                if(vec[idx]!=price) {
+                    vec.push_back(price);
+                    nec.push_back(max(nec[idx], beauty));
+                }
+                else {
+                    nec[idx] = max(beauty, nec[idx]);
+                }
+            }
+            else {
+                vec.push_back(price);
+                nec.push_back(beauty);
+            }
+        }
+        
+        vector<int> result;
+
+        for(auto query:queries) {
+            if(query < vec[0])  {
+                result.push_back(0);
+            }
+            else {
+                auto itr = lower_bound(vec.begin(), vec.end(), query);
+
+                int idx = itr - vec.begin();
+                if(itr==vec.end() || *itr!=query) idx--;
+                result.push_back(nec[idx]);
+            }
+        }
+
+        return result;
+    }
+};`
     },
     0: {
         problem: ``,
