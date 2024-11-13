@@ -359,9 +359,24 @@ public:
     }
 };`
     },
+    2563: {
+        problem: `Count the Number of Fair Pairs`,
+        code:  `---`
+    },
     0: {
         problem: ``,
         code:  ``
     },
-    
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
 }
