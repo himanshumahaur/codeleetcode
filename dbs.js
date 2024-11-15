@@ -363,9 +363,51 @@ public:
         problem: `Count the Number of Fair Pairs`,
         code:  `---`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    1574: {
+        problem: `Shortest Subarray to be Removed to Make Array Sorted`,
+        code:  `class Solution {
+public:
+    int findLengthOfShortestSubarray(vector<int>& arr) {
+        int n = arr.size();
+        int p1 = -1;
+        int p2 = n;
+
+        int tmp;
+        
+        tmp = arr[0];
+        for(int i=0; i<n; i++) {
+            if(arr[i] >= tmp) {
+                p1++;
+                tmp  = arr[i];
+            }
+            else break;
+        }
+
+        tmp = arr[n-1];
+        for(int i=0; i<n; i++) {
+            if(arr[n-1-i] <= tmp) {
+                p2--;
+                tmp  = arr[n-1-i];
+            }
+            else break;
+        }
+
+        int res = INT_MAX;
+
+        if(p1 > -1 && p2 < n) {
+            for(int i=0; i<=p1; i++) {
+                auto itr = lower_bound(arr.begin() + p2, arr.end(), arr[i]);
+                if(itr!=arr.end()) {
+                    int x = itr - arr.begin() - i - 1;
+                    res = min(res, x);
+                }
+            }
+        }
+
+        if(res<0) return 0;
+        return min(res, min(n - p1 - 1, p2));
+    }
+};`
     },
     0: {
         problem: ``,
