@@ -409,9 +409,39 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    3254: {
+        problem: `Find the Power of K-Size Subarrays I`,
+        code:  `class Solution {
+public:
+    vector<int> resultsArray(vector<int>& nums, int k) {
+        if(k==1) return nums;
+
+        map<int, bool> error;
+        int tmp = nums[0] - 1;
+
+        vector<int> res;
+
+        for(int i=0; i<k; i++) {
+            if(nums[i] != tmp + 1) error[i-1] = true;
+            tmp = nums[i];
+        }
+
+        if(error.size()) res.push_back(-1);
+        else res.push_back(nums[k-1]);
+
+        for(int i=k; i<nums.size(); i++) {
+            error.erase(i-k);
+            if(nums[i] != tmp + 1) error[i-1] = true;
+
+            if(error.size()) res.push_back(-1);
+            else res.push_back(nums[i]);
+        
+            tmp = nums[i];
+        }
+
+        return res;
+    }
+};`
     },
     0: {
         problem: ``,
