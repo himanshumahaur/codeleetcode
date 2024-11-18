@@ -443,6 +443,48 @@ public:
     }
 };`
     },
+    1652: {
+        problem: `Defuse the Bomb`,
+        code:  `class Solution {
+public:
+    vector<int> decrypt(vector<int>& code, int k) {
+        int n = code.size();
+        vector<int> res(n);
+        
+        if(k>0) {
+            for(int i=0; i<n; i++) {
+                int idx = i+1;
+                int sum = 0;
+                for(int j=0; j<k; j++) {
+                    idx %= n;
+                    sum += code[idx];
+                    idx++;
+                }
+                res[i] = sum;
+            }
+        }
+
+        if(k<0) {
+            for(int i=0; i<n; i++) {
+                int idx = i-1;
+                int sum = 0;
+                for(int j=0; j<abs(k); j++) {
+                    idx = (idx+n)%n;
+                    sum += code[idx];
+                    idx--;
+                }
+                res[i] = sum;
+            }
+        }
+
+        return res;
+    }
+};`
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
     0: {
         problem: ``,
         code:  ``
@@ -451,4 +493,40 @@ public:
         problem: ``,
         code:  ``
     },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    },
+    0: {
+        problem: ``,
+        code:  ``
+    }
 }
