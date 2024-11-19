@@ -481,9 +481,38 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    2461: {
+        problem: `Maximum Sum of Distinct Subarrays With Length K`,
+        code:  `class Solution {
+public:
+    long long maximumSubarraySum(vector<int>& nums, int k) {
+        unordered_map<int, int> mem;
+        int n = nums.size();
+        
+        long long res = 0;
+        long long cur = 0;
+
+        for(int i=0; i<k; i++) {
+            mem[nums[i]]++;
+            cur += nums[i];
+        }
+        if(mem.size() == k) res = max(res, cur);
+        
+
+        for(int i=k; i<n; i++) {
+            if(mem[nums[i-k]] > 1) mem[nums[i-k]]--;
+            else mem.erase(nums[i-k]);
+
+            mem[nums[i]]++;
+            cur += nums[i];
+            cur -= nums[i-k];
+
+            if(mem.size() == k) res = max(res, cur);
+        }
+
+        return res;
+    }
+};`
     },
     0: {
         problem: ``,
