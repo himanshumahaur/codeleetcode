@@ -514,9 +514,33 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    3042: {
+        problem: `Count Prefix and Suffix Pairs I`,
+        code:  `class Solution {
+public:
+    bool isPrefixAndSuffix(string s1, string s2) {
+        if(s1.length() > s2.length()) return false;
+
+        for(int i=0; i<s1.length(); i++) {
+            if(s1[i]!=s2[i] || s1[s1.length()-1-i]!=s2[s2.length()-1-i]) return false;
+        }
+
+        return true;
+    }
+
+    int countPrefixSuffixPairs(vector<string>& words) {
+        int n = words.size();
+        int count = 0;
+        
+        for(int i=0; i<n; i++) {
+            for(int j=i+1; j<n; j++) {
+                if(isPrefixAndSuffix(words[i], words[j])) count++;
+            }
+        }
+
+        return count;
+    }
+};`
     },
     0: {
         problem: ``,
