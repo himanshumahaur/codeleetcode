@@ -542,9 +542,19 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    2185: {
+        problem: `Counting Words With a Given Prefix`,
+        code:  `class Solution {
+public:
+    int prefixCount(vector<string>& words, string pref) {
+        int count = 0;
+        for(auto word:words) {
+            if(word.length() < pref.length()) continue;
+            if(word.substr(0, pref.length())==pref) count++;
+        }
+        return count;
+    }
+};`
     },
     0: {
         problem: ``,
