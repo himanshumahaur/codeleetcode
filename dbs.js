@@ -556,9 +556,24 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    1400: {
+        problem: `Construct K Palindrome Strings`,
+        code:  `class Solution {
+public:
+    bool canConstruct(string s, int k) {
+        vector<int> frq(26, 0);
+        for(auto i:s) frq[i-'a']++;
+
+        int odd = 0;
+
+        for(auto i:frq) if(i%2) odd++;
+
+        if(odd > k) return false;
+        if(s.length() < k) return false;
+
+        return true;
+    }
+};`
     },
     0: {
         problem: ``,
