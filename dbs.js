@@ -575,9 +575,31 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    3442: {
+        problem: `Maximum Difference Between Even and Odd Frequency I`,
+        code:  `class Solution {
+public:
+    int maxDifference(string s) {
+        int odd = INT_MIN;
+        int eve = INT_MAX;
+
+        vector<int> frq(26, 0);
+
+        for(auto i:s) frq[i-'a']++;
+        
+        for(auto num:frq) {
+            if(num)
+            if(num%2) {
+                odd = max(odd, num);
+            }
+            else {
+                eve = min(eve, num);
+            }
+        }
+
+        return odd-eve;
+    }
+};`
     },
     0: {
         problem: ``,
