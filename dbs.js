@@ -601,9 +601,19 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    3423: {
+        problem: `Maximum Difference Between Adjacent Elements in a Circular Array`,
+        code:  `class Solution {
+public:
+    int maxAdjacentDistance(vector<int>& nums) {
+        int m = INT_MIN;
+        for(int i=0; i<nums.size()-1; i++) {
+            m = max(m, abs(nums[i+1]-nums[i]));
+        }
+        m = max(m, abs(nums[0]-nums[nums.size()-1]));
+        return m;
+    }
+};`
     },
     0: {
         problem: ``,
