@@ -615,9 +615,33 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    3396: {
+        problem: `Minimum Number of Operations to Make Elements in Array Distinct`,
+        code:  `class Solution {
+public:
+    int minimumOperations(vector<int>& nums) {
+        unordered_map<int, int> mem;
+        int n = nums.size();
+        int len = 0;
+
+        for(int i=0; i<n; i++) {
+            int num = nums[n-1-i];
+            if(mem.count(num)) {
+                break;
+            }
+            else {
+                mem[num] = 1;
+            }
+            len++;
+        }
+
+        int res = 0;
+        for(int i=0; len+i<n; i+=3) {
+            res++;
+        }
+        return res;
+    }
+};`
     },
     0: {
         problem: ``,
