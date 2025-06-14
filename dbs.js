@@ -643,9 +643,37 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    2566: {
+        problem: `Maximum Difference by Remapping a Digit`,
+        code:  `class Solution {
+public:
+    int minMaxDifference(int num) {
+        string str = to_string(num);
+        char dig;
+
+        for(int i=0; i<str.length(); i++) {
+            if(str[i] != '9') {
+                dig = str[i];
+                break;
+            }
+        }
+        for(int i=0; i<str.length(); i++) {
+            if(str[i]==dig) str[i] = '9';
+        }
+
+        int max = stoi(str);
+
+        str = to_string(num);
+        dig = str[0];
+        for(int i=0; i<str.length(); i++) {
+            if(str[i]==dig) str[i] = '0';
+        }
+
+        int min = stoi(str);
+
+        return max-min;
+    }
+};`
     },
     0: {
         problem: ``,
