@@ -675,9 +675,22 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    2016: {
+        problem: `Maximum Difference Between Increasing Elements`,
+        code:  `class Solution {
+public:
+    int maximumDifference(vector<int>& nums) {
+        int n = nums.size();
+        int M = -1;
+        for(int i=0; i<n-1; i++) {
+            for(int j=i+1; j<n; j++) {
+                M = max(M, nums[j]-nums[i]);
+            }
+        }
+        if(M <= 0) return -1;
+        return M;
+    }
+};`
     },
     0: {
         problem: ``,
