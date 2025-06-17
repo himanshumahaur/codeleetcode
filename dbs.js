@@ -692,9 +692,45 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    83: {
+        problem: `Remove Duplicates from Sorted List`,
+        code:  `/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        map<int, bool> mem;
+        while(head) {
+            mem[head->val] = true;
+            head = head->next;
+        }
+
+        ListNode* res = NULL;
+        ListNode* tmp;
+        
+        for(auto &i:mem) {
+            if(!res) {
+                tmp = new ListNode(i.first);
+                tmp->next = NULL;
+                res = tmp;
+            }
+            else {
+                tmp->next = new ListNode(i.first);
+                tmp = tmp->next;
+                tmp->next = NULL;
+            }
+        }
+        return res;
+    }
+};`
     },
     0: {
         problem: ``,
