@@ -732,9 +732,25 @@ public:
     }
 };`
     },
-    0: {
-        problem: ``,
-        code:  ``
+    2966: {
+        problem: `Divide Array Into Arrays With Max Difference`,
+        code:  `class Solution {
+public:
+    vector<vector<int>> divideArray(vector<int>& nums, int k) {
+        int n = nums.size();
+        sort(nums.begin(), nums.end());
+        vector<vector<int>> res;
+        for(int i=0; i<n; i+=3) {
+            vector<int> vec;
+            if(nums[i+2]-nums[i] > k) return {};
+            for(int j=i; j<i+3; j++) {
+                vec.push_back(nums[j]);
+            }
+            res.push_back(vec);
+        }
+        return res;
+    }
+};`
     },
     0: {
         problem: ``,
